@@ -1,0 +1,275 @@
+* {
+  /*pra zerar tudo que vem de padrão*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; /*behavior=comportamento, ou seja, no scroll ele fica smooth= suave*/
+}
+
+:root {
+  --primaria: #becbdb; /* cinza claro */
+  --secundaria: #0827d8; /* cinza médio */
+  --escuro: #00013b; /* grafite escuro */
+  --maisEscuro: #02013b; /* quase preto com leve azul */
+  --claro: #cfdbe7; /* off-white */
+  --vidro: rgba(12, 8, 253, 0.06); /* vidro elegante */
+}
+
+body {
+  background-color: var(--escuro);
+  color: var(--claro);
+}
+
+.navegacao {
+  /*classe nav inicio, sobre...*/
+  position: fixed; /*fica fixado mesmo rolado pra baixo, ou seja, eu rolo e ele vem junto*/
+  background: rgba(15, 23, 42, 0.8); /*esse 0.8 é a opacidade*/
+  width: 100%;
+  z-index: 100; /*define quem fica na frente de quem*/
+  top: 0; /*pra garantir que ele vai ficar no topo*/
+  padding: 1.5rem; /*espaçamento interno*/
+}
+
+.menu {
+  display: flex; /*deixa um do lado do outro*/
+  list-style: none; /*tira a bolinha da lista*/
+  gap: 3rem; /*espaço entre os links pra n ficar tudo junto*/
+  justify-content: center; /*centralizar  o menu*/
+}
+
+.menu-link {
+  text-decoration: none;
+  color: var(--claro);
+  font-weight: 500px; /*deixar mais grossinha*/
+  position: relative;
+  padding: 0.5rem 0; /*0= dos lados não precisa*/
+}
+
+.menu-link::after {
+  /*linha embaixo dos links*/
+  content: "";
+  height: 2px;
+  width: 0; /*largura*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #f3f4f6; /* isso sim pinta a linha */
+  transition: width 0.5s ease; /*efeito da linha*/
+}
+
+.menu-link:hover::after {
+  /*hover e algo que acontece so quando coloca o mouse em cima*/
+  width: 100%;
+}
+
+.cabecalho {
+  min-height: 100vh; /*vh tela toda*/
+  display: flex; /*é uma propriedade do CSS que transforma um elemento em um contêiner flexível, permitindo que você organize e alinhe seus filhos de forma mais fácil e flexível.*/
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* no caso deixou o nome e profissao um embaixo do outro*/
+}
+
+.foto-perfil {
+  width: 350px;
+  height: 360px;
+  box-shadow: -5px 3px 53px 12px rgba(19, 19, 31, 1);
+  border-radius: 50%;
+  border: rgba(225, 255, 255, 0.1);
+  animation: flutuar 5s ease-in-out infinite; /*a que fizemos la embaixo*/
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--primaria);
+  font-weight: bold;
+  margin: 25px;
+  font-family: "Jersey 10", sans-serif;
+  letter-spacing: 2px;
+}
+
+.cabecalho-profissao {
+  font-size: 2rem;
+  color: var(--primaria);
+}
+
+.sobre {
+  padding: 6rem 2rem;
+}
+
+.sobre-titulo {
+  font-size: 3rem;
+  color: var(--claro);
+  text-align: center;
+  font-family: "Jersey 10", sans-serif;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.sobre-caixa {
+  padding: 2rem;
+  max-width: 800px; /*deixa a caixa compacta*/
+  margin: 0 auto; /*centralizou*/
+  border-radius: 16px;
+  border: 1px solid rgba(225, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /*junto com o bg da um blur na caixa*/
+  background: #253041;
+}
+
+.sobre-texto {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.projetos {
+  padding: 6rem, 2rem;
+}
+
+.projetos-titulo {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Jersey 10", sans-serif;
+  letter-spacing: 5px;
+  margin-bottom: 50px;
+}
+
+.projetos-card:hover {
+  box-shadow: 21px 25px 39px -32px rgba(109, 109, 115, 1);
+  transform: translateY(-10px) scale(1.03); /*aumenta quando passa o mouse em cima (scale)*/
+}
+
+.projetos-imagem {
+  height: 200px;
+  width: 100%;
+  object-fit: cover; /*cobrir a area q ele esta*/
+}
+
+.projetos-caixa {
+  display: grid; /*é uma propriedade em CSS que permite criar layouts bidimensionais com linhas e colunas, facilitando a organização de elementos em uma página web*/
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /*deixa um do lado do outro em colunas, 1fr = 1 fração, auto fit= faça com q caibam na tela*/
+  gap: 2rem; /*so pra descolar*/
+  max-width: 1200px; /*se a tela for MUITO grande, nao quero q cresca pra sempre, por isso nao usei o width 100%*/
+  margin: 0 auto; /*se abrir a tela do pc pro lado ele vem junto e centraliza*/
+}
+
+.projetos-card {
+  background: #253041;
+  border-radius: 16px;
+  border: 1px solid rgba(225, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  overflow: hidden; /*oq sobrar vc esconde kkkkkk*/
+  transition: all 0.5s ease; /*pra n ficar duro quando aumentar*/
+  cursor: pointer; /*pra ficar a maozinha qnd passa em cima*/
+  height: 355px;
+}
+
+.paragrafos-projetos {
+  color: rgba(226 232 240 0.8);
+  line-height: 1.25rem;
+}
+
+.caixa-texto-projetos {
+  padding: 1.5rem; /*desgrudou as linhas dos textos dos projetos*/
+}
+
+.info-projetos {
+  margin-bottom: 10px;
+}
+
+.contatos {
+  padding: 6rem 2rem;
+}
+
+.contatos-titulo {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Jersey 10", sans-serif;
+  letter-spacing: 5px;
+  margin-bottom: 50px;
+}
+
+.formulario-contato {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #253041;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border: 1px solid rgba(225, 255, 255, 0.1);
+}
+
+.campo-form {
+  width: 100%; /*a area de digitar fica mais larga dentro daquela caixa redonda*/
+  padding: 1rem;
+  background: #253041;
+  border-radius: 8px;
+  color: var(--claro);
+  order: 1px solid rgba(225, 255, 255, 0.1);
+  outline: none;
+}
+
+.campo-form:focus {
+  /*quando der foco nele, ou seja, mouse em cima, ele faz isso:*/
+  border-color: var(--secundaria);
+  box-shadow: 21px 25px 39px -32px rgba(109, 109, 115, 1);
+}
+
+.grupo-form {
+  margin-bottom: 1.5rem;
+}
+
+.botao-form {
+  color: var(--claro);
+  background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+  padding: 1rem 2rem; /*o primeiro numero é em cima e em baixo e o segundo é dos lados*/
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: all 0.5 ease;
+}
+
+.botao-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 21px 25px 39px -32px rgba(109, 109, 115, 1);
+}
+
+.manchas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /*n vai sobrepor nada*/
+  opacity: 0.5;
+  background: radial-gradient(
+      circle at 10% 20%,
+      var(--secundaria) 0%,
+      transparent 20%
+    ),
+    radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%),
+    var(--maisEscuro);
+}
+
+@keyframes flutuar {
+  /*ai coloquei o codigo em foto de perfil pra entender que a animação tem q ficar ali*/
+  /*momento 0 e momento 100(final) ele vai estar Y 0*/
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    /*e no momento 50 ele vai estar a -20*/
+    transform: translateY(-20px);
+  }
+}

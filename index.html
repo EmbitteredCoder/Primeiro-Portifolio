@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portifólio - Bitboy</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="manchas"></div>
+    <nav class="navegacao">
+      <!--menu de navegacao, inicio, sobre...-->
+      <ul class="menu">
+        <!-- Lista -->
+
+        <li>
+          <!--Itens da lista -->
+
+          <a href="#inicio" class="menu-link">Inicio</a
+          ><!-- Link clicavel redirecionador -->
+        </li>
+
+        <li>
+          <a href="#sobre" class="menu-link">Sobre</a>
+        </li>
+
+        <li>
+          <a href="#projetos" class="menu-link">Projetos</a>
+        </li>
+
+        <li>
+          <a href="#contatos" class="menu-link">Contatos</a>
+        </li>
+      </ul>
+    </nav>
+    <!--fim da tag nav-->
+
+    <main id="inicio" class="cabecalho">
+      <!--Parte principal| tambem conecta os links la de cima-->
+
+      <img
+        src="images/foto de perfil duede.jpeg"
+        alt="Foto do Pedro"
+        class="foto-perfil"
+      />
+      <h1>Pedro Benjamin</h1>
+      <p class="cabecalho-profissao">Dev | Front-End</p>
+    </main>
+
+    <section id="sobre" class="sobre">
+      <!--sobre mim-->
+      <h2 class="sobre-titulo">Sobre mim</h2>
+      <div class="sobre-caixa">
+        <p class="sobre-texto">
+          Sou um programador front-end em formação, com domínio de HTML e CSS e
+          conhecimentos básicos em JavaScript. Tenho foco em criar interfaces
+          responsivas e intuitivas, sempre escrevendo um código limpo,
+          organizado e fácil de manter, enquanto evoluo tecnicamente e
+          visualmente em cada projeto.
+        </p>
+      </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+      <!--sessão dos projetos e suas descrições-->
+      <!--sobre meus projetos-->
+      <h2 class="projetos-titulo">Meus Projetos</h2>
+      <div class="projetos-caixa">
+        <div class="projetos-card">
+          <img
+            src="images/projeto1.jpg"
+            alt="Projeto 1"
+            class="projetos-imagem"
+          />
+          <div class="caixa-texto-projetos">
+            <h3 class="info-projetos">Loja de Carros</h3>
+            <p class="paragrafo-projetos">
+              Loja virtual moderna com animações suaves e design responsivo para
+              uma loja de carros.
+            </p>
+          </div>
+        </div>
+        <!--___________________________________________________espaçamento-->
+        <div class="projetos-card">
+          <img
+            src="images/projeto2.jpg"
+            alt="Projeto 2"
+            class="projetos-imagem"
+          />
+          <div class="caixa-texto-projetos">
+            <h3 class="info-projetos">Pagina de Viagens</h3>
+            <p class="paragrafo-projetos">
+              Uma página interativa com roteiros de viagem mais cobicados do
+              mundo.
+            </p>
+          </div>
+        </div>
+        <!--__________________________________________________espaçamento-->
+        <div class="projetos-card">
+          <img
+            src="images/projeto3.jpeg"
+            alt="Projeto 3"
+            class="projetos-imagem"
+          />
+          <div class="caixa-texto-projetos">
+            <h3 class="info-projetos">KaBum</h3>
+            <p class="paragrafo-projetos">
+              Pagina da KaBum criada para demonstrar conhecimentos em diversas
+              tecnologias.
+            </p>
+          </div>
+        </div>
+        <!--___________________________________________________espaçamento-->
+      </div>
+    </section>
+    <!--fim da sessão projetos-->
+
+    <section id="contatos" class="contatos">
+      <h2 class="contatos-titulo">Entre em Contato</h2>
+
+      <form
+        class="formulario-contato"
+        id="formulario"
+        onsubmit="enviarWhats(event)"
+      >
+        <!--submeter, ou seja, enviar-->
+        <!--clica pra colocar o nome e mandar uma mensagem-->
+        <div class="grupo-form">
+          <input placeholder="Nome" class="campo-form" id="nome" />
+        </div>
+
+        <div class="grupo-form">
+          <textarea
+            class="campo-form"
+            placeholder="Digite sua Mensagem"
+            id="mensagem"
+            rows="7"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="botao-form">
+          <!--temq ficar dentro do form-->
+          Enviar Whatsapp
+        </button>
+      </form>
+      <!--form serve para coletar e organizar dados de entrada de um usuário-->
+    </section>
+
+    <script>
+      /*javascript*/
+
+      function enviarWhats(event) {
+        /*ou seja, quando o botao for clicado o formulario vai ser enviado, caso contrario, não*/
+        event.preventDefault(); /*pra tela não recarregar*/
+        const nome =
+          document.getElementById(
+            "nome"
+          ).value; /*docuemnt é o html, value e o valor, ou seja, informação, nao o "nome"igual o id diz kkkkkkkk*/
+        const mensagem = document.getElementById("mensagem").value;
+        const telefone = "5541992150919"; /* o '' é uma string*/
+        const texto = `Olá! Me chamo ${nome}, ${mensagem}`; /*o $ é a variavel*/
+        const msgFormatada =
+          encodeURIComponent(
+            texto
+          ); /*ele n envia com espaços, pra enviar com espaços a url usa o codigo 20%, e esse cara aq formata a msg, numero e nome pra mandar com espaço certinho*/
+        const url = `https://wa.me/${telefone}?text=${msgFormatada}`; /*o t= é o texto*/
+        window.open(
+          url,
+          "_blank"
+        ); /*esse code e pra abrir uma janela, blank e pra abrir em uma pagina nova*/
+        console.log(url); /* acho q mostra o erro no inspencionar elemento :P*/
+      }
+    </script>
+  </body>
+</html>
